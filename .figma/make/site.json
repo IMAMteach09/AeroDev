@@ -1,0 +1,15 @@
+{
+  "title": "AeroDev",
+  "language": "en",
+  "icons": {
+    "icon": "/assets/ad-logo.png"
+  },
+  "description": "This landing page showcases a digital agency offering AI automation and web/app development solutions, featuring a sleek design and easy WhatsApp contact.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
