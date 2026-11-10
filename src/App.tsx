@@ -269,23 +269,10 @@ const translations = {
         "AI automation, websites, and apps designed to remove friction, unlock growth, and move your business forward.",
       primaryButton: "Start a conversation",
       secondaryButton: "Explore our work",
-      trustTitle: "Trusted by ambitious teams",
-      trustBody: "Built around your business goals",
       visualLabel: "AeroDev creative technology visualization",
       workflowTitle: "AI workflow",
       workflowSubtitle: "Running smoothly",
       efficiencyLabel: "Efficiency gained",
-    },
-    stats: {
-      ariaLabel: "Key statistics",
-      firstValue: "0+",
-      firstLabel: "Products launched",
-      secondValue: "0+",
-      secondLabel: "Automations shipped",
-      thirdValue: "98%",
-      thirdLabel: "Client satisfaction",
-      noteLineOne: "Strategy-led. Design-focused.",
-      noteLineTwo: "Built to perform.",
     },
     services: {
       label: "What we do",
@@ -382,23 +369,10 @@ const translations = {
         "نقدّم أتمتة بالذكاء الاصطناعي، ومواقع ويب، وتطبيقات تقلل التعقيد، وتفتح فرص النمو، وتدفع عملك إلى الأمام.",
       primaryButton: "ابدأ المحادثة",
       secondaryButton: "استكشف أعمالنا",
-      trustTitle: "موثوق به من فرق طموحة",
-      trustBody: "مصمم حول أهداف عملك",
       visualLabel: "تصور إبداعي وتقني لـ AeroDev",
       workflowTitle: "تدفق عمل ذكي",
       workflowSubtitle: "يعمل بانسيابية",
       efficiencyLabel: "تحسن الكفاءة",
-    },
-    stats: {
-      ariaLabel: "الإحصائيات الرئيسية",
-      firstValue: "0+",
-      firstLabel: "منتجًا تم إطلاقه",
-      secondValue: "0+",
-      secondLabel: "أتمتة تم تسليمها",
-      thirdValue: "98%",
-      thirdLabel: "رضا العملاء",
-      noteLineOne: "مبني على الاستراتيجية. ومركّز على التصميم.",
-      noteLineTwo: "مصمم ليقدّم أداءً قويًا.",
     },
     services: {
       label: "ما نقدمه",
@@ -631,18 +605,6 @@ export default function App() {
               {copy.hero.secondaryButton} <ArrowRight className="button-icon" />
             </a>
           </div>
-          <div className="trust-row">
-            <div className="avatar-stack" aria-hidden="true">
-              <span>MK</span>
-              <span>SA</span>
-              <span>JL</span>
-            </div>
-            <p>
-              <strong>{copy.hero.trustTitle}</strong>
-              <br />
-              {copy.hero.trustBody}
-            </p>
-          </div>
         </div>
 
         <div
@@ -687,26 +649,6 @@ export default function App() {
             <Spark />
           </div>
         </div>
-      </section>
-
-      <section className="proof-strip" aria-label={copy.stats.ariaLabel}>
-        <div>
-          <strong>{copy.stats.firstValue}</strong>
-          <span>{copy.stats.firstLabel}</span>
-        </div>
-        <div>
-          <strong>{copy.stats.secondValue}</strong>
-          <span>{copy.stats.secondLabel}</span>
-        </div>
-        <div>
-          <strong>{copy.stats.thirdValue}</strong>
-          <span>{copy.stats.thirdLabel}</span>
-        </div>
-        <p>
-          {copy.stats.noteLineOne}
-          <br />
-          {copy.stats.noteLineTwo}
-        </p>
       </section>
 
       <section className="services-section" id="services">
