@@ -1,5 +1,8 @@
 import { useEffect, useState, type ReactNode } from "react"
-import logoAssetUrl from "./assets/ad-logo.png?inline"
+
+// The logo now lives directly in the /public folder (public/ad-logo.png).
+// Files in /public are served from the site root, so no import is needed.
+const logoAssetUrl = "/ad-logo.png"
 
 const whatsappUrl =
   "https://wa.me/213652580787?text=Hi%20AeroDev%2C%20I%27d%20like%20to%20discuss%20a%20digital%20project."
@@ -459,11 +462,8 @@ export default function App() {
     window.localStorage.setItem("aerodev-language", language)
   }, [language, direction])
 
+  // Set the favicon from the logo in /public
   useEffect(() => {
-    let cancelled = false
-
-    if (cancelled) return
-
     let iconLink = document.querySelector(
       'link[rel="icon"]',
     ) as HTMLLinkElement | null
@@ -474,11 +474,8 @@ export default function App() {
       document.head.append(iconLink)
     }
 
+    iconLink.type = "image/png"
     iconLink.href = logoAssetUrl
-
-    return () => {
-      cancelled = true
-    }
   }, [])
 
   return (
