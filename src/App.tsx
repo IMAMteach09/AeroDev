@@ -6,63 +6,11 @@ const whatsappUrl =
 
 type IconProps = { className?: string }
 
-let transparentLogoPromise: Promise<string> | undefined
-
-function getTransparentLogo() {
-  if (!transparentLogoPromise) {
-    transparentLogoPromise = new Promise((resolve) => {
-      const image = new Image()
-      image.onload = () => {
-        const canvas = document.createElement("canvas")
-        canvas.width = image.naturalWidth
-        canvas.height = image.naturalHeight
-        const context = canvas.getContext("2d")
-
-        if (!context) {
-          resolve(logoAssetUrl)
-          return
-        }
-
-        context.drawImage(image, 0, 0)
-        const pixels = context.getImageData(0, 0, canvas.width, canvas.height)
-
-        for (let index = 0; index < pixels.data.length; index += 4) {
-          const red = pixels.data[index]
-          const green = pixels.data[index + 1]
-          const blue = pixels.data[index + 2]
-          const brightestChannel = Math.max(red, green, blue)
-
-          if (brightestChannel < 22) {
-            pixels.data[index + 3] = 0
-          } else if (brightestChannel < 58) {
-            pixels.data[index + 3] = Math.round(
-              ((brightestChannel - 22) / 36) * 255,
-            )
-          }
-        }
-
-        context.putImageData(pixels, 0, 0)
-        resolve(canvas.toDataURL("image/png"))
-      }
-      image.onerror = () => resolve(logoAssetUrl)
-      image.src = logoAssetUrl
-    })
-  }
-
-  return transparentLogoPromise
-}
-
 function LogoImage({ alt = "" }: { alt?: string }) {
-  const [source, setSource] = useState("")
-
-  useEffect(() => {
-    void getTransparentLogo().then(setSource)
-  }, [])
-
   return (
     <img
-      className={source ? "logo-image logo-image-ready" : "logo-image"}
-      src={source || logoAssetUrl}
+      className="logo-image"
+      src={logoAssetUrl}
       alt={alt}
     />
   )
@@ -514,21 +462,19 @@ export default function App() {
   useEffect(() => {
     let cancelled = false
 
-    void getTransparentLogo().then((logoHref) => {
-      if (cancelled) return
+    if (cancelled) return
 
-      let iconLink = document.querySelector(
-        'link[rel="icon"]',
-      ) as HTMLLinkElement | null
+    let iconLink = document.querySelector(
+      'link[rel="icon"]',
+    ) as HTMLLinkElement | null
 
-      if (!iconLink) {
-        iconLink = document.createElement("link")
-        iconLink.rel = "icon"
-        document.head.append(iconLink)
-      }
+    if (!iconLink) {
+      iconLink = document.createElement("link")
+      iconLink.rel = "icon"
+      document.head.append(iconLink)
+    }
 
-      iconLink.href = logoHref
-    })
+    iconLink.href = logoAssetUrl
 
     return () => {
       cancelled = true

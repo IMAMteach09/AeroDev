@@ -83,12 +83,7 @@ main {
 }
 
 .logo-image {
-  opacity: 0;
-}
-
-.logo-image-ready {
   opacity: 1;
-  transition: opacity 180ms ease;
 }
 
 .nav-links {
