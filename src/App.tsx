@@ -1,7 +1,8 @@
 import { useEffect, useState, type ReactNode } from "react"
 
 const whatsappUrl =
-  "https://wa.me/?text=Hi%20AeroDev%2C%20I%27d%20like%20to%20discuss%20a%20digital%20project."
+  "https://wa.me/213652580787?text=Hi%20AeroDev%2C%20I%27d%20like%20to%20discuss%20a%20digital%20project."
+const logoAssetUrl = `${import.meta.env.BASE_URL}assets/ad-logo.png`
 
 type IconProps = { className?: string }
 
@@ -18,7 +19,7 @@ function getTransparentLogo() {
         const context = canvas.getContext("2d")
 
         if (!context) {
-          resolve("/assets/ad-logo.png")
+          resolve(logoAssetUrl)
           return
         }
 
@@ -43,8 +44,8 @@ function getTransparentLogo() {
         context.putImageData(pixels, 0, 0)
         resolve(canvas.toDataURL("image/png"))
       }
-      image.onerror = () => resolve("/assets/ad-logo.png")
-      image.src = "/assets/ad-logo.png"
+      image.onerror = () => resolve(logoAssetUrl)
+      image.src = logoAssetUrl
     })
   }
 
@@ -61,7 +62,7 @@ function LogoImage({ alt = "" }: { alt?: string }) {
   return (
     <img
       className={source ? "logo-image logo-image-ready" : "logo-image"}
-      src={source || "/assets/ad-logo.png"}
+      src={source || logoAssetUrl}
       alt={alt}
     />
   )
@@ -220,19 +221,6 @@ function TikTok({ className = "" }: IconProps) {
       <path
         d="M14.1 3.5c.7 1.8 1.9 2.8 3.9 2.9v2.5c-1.5 0-2.7-.5-3.8-1.4v5.7c0 3.3-2.4 5.8-5.7 5.8-2.6 0-4.8-1.8-5.4-4.2-.7-2.9.9-5.8 3.8-6.7.4-.1.9-.2 1.4-.2v2.7c-1.5.1-2.6 1.2-2.6 2.7 0 1.3 1 2.4 2.2 2.7 1.5.4 2.9-.5 3.3-1.9.1-.4.2-.8.2-1.3V3.5h2.7Z"
         fill="currentColor"
-      />
-    </svg>
-  )
-}
-
-function Phone({ className = "" }: IconProps) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M8.1 4.7c.5-.5 1.2-.5 1.7 0l1.3 1.3c.4.4.5 1 .2 1.4l-.9 1.5c-.2.4-.2.8 0 1.2.6 1.1 1.4 2.2 2.4 3.2 1 .9 2.1 1.7 3.2 2.3.4.2.8.2 1.2 0l1.5-.9c.4-.2 1-.2 1.4.2l1.3 1.3c.5.5.5 1.2 0 1.7l-1.1 1.1c-.7.7-1.8 1-2.8.7-3.1-.9-6.4-3.5-8.8-5.9-2.4-2.4-5-5.7-5.9-8.8-.3-1 .1-2.1.7-2.8l1.1-1.1Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
       />
     </svg>
   )
@@ -453,10 +441,9 @@ const translations = {
 } as const
 
 const socialLinks = {
-  facebook: "https://facebook.com/AeroDev",
-  instagram: "https://instagram.com/AeroDev",
-  tiktok: "https://tiktok.com/@AeroDev",
-  phone: "tel:+0000000000",
+  facebook: "https://www.facebook.com/share/19wPG27NwD/",
+  instagram: "https://www.instagram.com/aerodev_studios?dlrf=aTdueGcwYWc3bXo=",
+  tiktok: "https://www.tiktok.com/@aerodev.studios?_r=1&_t=ZS-9BLE9i4kAYI",
   email: "mailto:hello@aerodev.com",
 } as const
 
@@ -754,10 +741,6 @@ export default function App() {
           </a>
           <a className="footer-icon-link" href={socialLinks.tiktok} target="_blank" rel="noreferrer" aria-label="TikTok">
             <TikTok className="footer-icon" />
-          </a>
-          <span className="footer-divider" aria-hidden="true" />
-          <a className="footer-icon-link" href={socialLinks.phone} aria-label="Phone">
-            <Phone className="footer-icon" />
           </a>
           <a className="footer-icon-link" href={socialLinks.email} aria-label="Email">
             <Mail className="footer-icon" />
