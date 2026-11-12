@@ -1,8 +1,20 @@
 import { useEffect, useState, type ReactNode } from "react"
 
-// The logo now lives directly in the /public folder (public/ad-logo.png).
-// Files in /public are served from the site root, so no import is needed.
-const logoAssetUrl = "/ad-logo.png"
+import logoAssetUrl from "./assets/ad-logo.png?inline"
+
+import CtaSection from "./components/CtaSection"
+
+import { Footer, FloatingWhatsApp } from "./components/Footer"
+
+import HeroSection from "./components/HeroSection"
+
+import Navigation from "./components/Navigation"
+
+import ProcessSection from "./components/ProcessSection"
+
+import ServicesSection from "./components/ServicesSection"
+
+import type { SiteCopy } from "./types"
 
 const whatsappUrl =
   "https://wa.me/213652580787?text=Hi%20AeroDev%2C%20I%27d%20like%20to%20discuss%20a%20digital%20project."
@@ -10,13 +22,7 @@ const whatsappUrl =
 type IconProps = { className?: string }
 
 function LogoImage({ alt = "" }: { alt?: string }) {
-  return (
-    <img
-      className="logo-image"
-      src={logoAssetUrl}
-      alt={alt}
-    />
-  )
+  return <img className="logo-image" src={logoAssetUrl} alt={alt} />
 }
 
 function ArrowUpRight({ className = "" }: IconProps) {
@@ -147,8 +153,21 @@ function Layers({ className = "" }: IconProps) {
 
 function Instagram({ className = "" }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="4.5" y="4.5" width="15" height="15" rx="4" stroke="currentColor" strokeWidth="1.7" />
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect
+        x="4.5"
+        y="4.5"
+        width="15"
+        height="15"
+        rx="4"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
       <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="1.7" />
       <circle cx="16.7" cy="7.4" r="0.9" fill="currentColor" />
     </svg>
@@ -157,7 +176,12 @@ function Instagram({ className = "" }: IconProps) {
 
 function Facebook({ className = "" }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M13.5 8.5V7.2c0-.9.6-1.7 1.8-1.7h1.8V2.5h-2.3c-2.8 0-4.6 1.8-4.6 4.8v1.2H8v3h2.2v9h3.3v-9h2.7l.4-3h-3.1Z"
         fill="currentColor"
@@ -168,7 +192,12 @@ function Facebook({ className = "" }: IconProps) {
 
 function TikTok({ className = "" }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M14.1 3.5c.7 1.8 1.9 2.8 3.9 2.9v2.5c-1.5 0-2.7-.5-3.8-1.4v5.7c0 3.3-2.4 5.8-5.7 5.8-2.6 0-4.8-1.8-5.4-4.2-.7-2.9.9-5.8 3.8-6.7.4-.1.9-.2 1.4-.2v2.7c-1.5.1-2.6 1.2-2.6 2.7 0 1.3 1 2.4 2.2 2.7 1.5.4 2.9-.5 3.3-1.9.1-.4.2-.8.2-1.3V3.5h2.7Z"
         fill="currentColor"
@@ -179,9 +208,27 @@ function TikTok({ className = "" }: IconProps) {
 
 function Mail({ className = "" }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="4.5" y="6" width="15" height="12" rx="2.2" stroke="currentColor" strokeWidth="1.7" />
-      <path d="m5.5 7.5 6.5 5 6.5-5" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect
+        x="4.5"
+        y="6"
+        width="15"
+        height="12"
+        rx="2.2"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <path
+        d="m5.5 7.5 6.5 5 6.5-5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
     </svg>
   )
 }
@@ -192,200 +239,310 @@ const translations = {
   en: {
     nav: {
       services: "Services",
+
       process: "Process",
+
       about: "About",
+
       languageLabel: "العربية",
+
       languageAriaLabel: "Switch site language to Arabic",
+
       contact: "Let's talk",
+
       ariaLabel: "Main navigation",
+
       whatsappAriaLabel: "Contact AeroDev on WhatsApp",
     },
+
     hero: {
       eyebrow: "Digital solutions, built for momentum",
+
       headingLineOne: "We make digital",
+
       headingLineTwo: "work smarter.",
+
       description:
         "AI automation, websites, and apps designed to remove friction, unlock growth, and move your business forward.",
+
       primaryButton: "Start a conversation",
+
       secondaryButton: "Explore our work",
+
       visualLabel: "AeroDev creative technology visualization",
+
       workflowTitle: "AI workflow",
+
       workflowSubtitle: "Running smoothly",
+
       efficiencyLabel: "Efficiency gained",
     },
+
     services: {
       label: "What we do",
+
       headingLineOne: "One partner.",
+
       headingEmphasis: "Every digital edge.",
+
       intro:
         "From your first idea to a system that scales, we bring strategy, design, and engineering together under one roof.",
+
       cards: [
         {
           number: "01",
+
           title: "AI Automation",
+
           description:
             "We turn repetitive work into intelligent, reliable systems so your team can focus on the decisions that matter.",
+
           linkLabel: "Explore service",
         },
+
         {
           number: "02",
+
           title: "Web Development",
+
           description:
             "Fast, expressive websites that pair a premium user experience with clean, scalable technology.",
+
           linkLabel: "Explore service",
         },
+
         {
           number: "03",
+
           title: "App Development",
+
           description:
             "Thoughtful web and mobile products built around real users, business value, and long-term growth.",
+
           linkLabel: "Explore service",
         },
       ],
     },
+
     process: {
       label: "How we work",
+
       headingLineOne: "Clarity at every step.",
+
       headingLineTwo: "Momentum from day one.",
+
       steps: [
         {
           number: "01",
+
           title: "Discover",
+
           description:
             "We uncover your goals, bottlenecks, and biggest opportunities.",
         },
+
         {
           number: "02",
+
           title: "Design",
+
           description:
             "We shape the strategy, experience, and technical blueprint.",
         },
+
         {
           number: "03",
+
           title: "Deliver",
+
           description:
             "We build, test, launch, and stay close as your solution grows.",
         },
       ],
     },
+
     quote: {
       quote:
         "Technology should feel like a tailwind, not another thing to manage.",
+
       description:
         "That belief shapes every solution we create: simple to use, powerful underneath, and built to make a measurable difference.",
+
       signatureTitle: "AeroDev",
+
       signatureSubtitle: "Your digital growth partner",
     },
+
     cta: {
       label: "Have a project in mind?",
+
       headingLineOne: "Let's turn your next idea",
+
       headingLineTwo: "into real momentum.",
+
       description:
         "Tell us where you want to go. We'll help you build the smartest way there.",
+
       button: "Chat with us on WhatsApp",
     },
+
     footer: {
       lineOne: "AI automation · Web development · App development",
+
       lineTwo: "© 2025 AeroDev. Built for what's next.",
     },
   },
+
   ar: {
     nav: {
       services: "الخدمات",
+
       process: "العملية",
+
       about: "من نحن",
+
       languageLabel: "English",
+
       languageAriaLabel: "تبديل لغة الموقع إلى الإنجليزية",
+
       contact: "لنبدأ الحديث",
+
       ariaLabel: "التنقل الرئيسي",
+
       whatsappAriaLabel: "تواصل مع AeroDev عبر واتساب",
     },
+
     hero: {
       eyebrow: "حلول رقمية تبني الزخم",
+
       headingLineOne: "نجعل التحول الرقمي",
+
       headingLineTwo: "أذكى وأكثر بساطة.",
+
       description:
         "نقدّم أتمتة بالذكاء الاصطناعي، ومواقع ويب، وتطبيقات تقلل التعقيد، وتفتح فرص النمو، وتدفع عملك إلى الأمام.",
+
       primaryButton: "ابدأ المحادثة",
+
       secondaryButton: "استكشف أعمالنا",
+
       visualLabel: "تصور إبداعي وتقني لـ AeroDev",
+
       workflowTitle: "تدفق عمل ذكي",
+
       workflowSubtitle: "يعمل بانسيابية",
+
       efficiencyLabel: "تحسن الكفاءة",
     },
+
     services: {
       label: "ما نقدمه",
+
       headingLineOne: "شريك واحد.",
+
       headingEmphasis: "وكل ميزة رقمية تحتاجها.",
+
       intro:
         "من الفكرة الأولى إلى نظام قابل للتوسع، نجمع الاستراتيجية والتصميم والهندسة في مكان واحد.",
+
       cards: [
         {
           number: "٠١",
+
           title: "أتمتة بالذكاء الاصطناعي",
+
           description:
             "نحوّل المهام المتكررة إلى أنظمة ذكية وموثوقة حتى يركز فريقك على القرارات الأهم.",
+
           linkLabel: "استكشف الخدمة",
         },
+
         {
           number: "٠٢",
+
           title: "تطوير المواقع",
+
           description:
             "مواقع سريعة وواضحة تجمع بين تجربة مستخدم مميزة وتقنية نظيفة قابلة للتوسع.",
+
           linkLabel: "استكشف الخدمة",
         },
+
         {
           number: "٠٣",
+
           title: "تطوير التطبيقات",
+
           description:
             "منتجات ويب وتطبيقات مدروسة تُبنى حول المستخدمين الحقيقيين وقيمة الأعمال والنمو المستدام.",
+
           linkLabel: "استكشف الخدمة",
         },
       ],
     },
+
     process: {
       label: "كيف نعمل",
+
       headingLineOne: "وضوح في كل خطوة.",
+
       headingLineTwo: "وزخم من اليوم الأول.",
+
       steps: [
         {
           number: "٠١",
+
           title: "اكتشف",
-          description:
-            "نحدد أهدافك والعقبات وأكبر الفرص المتاحة للنمو.",
+
+          description: "نحدد أهدافك والعقبات وأكبر الفرص المتاحة للنمو.",
         },
+
         {
           number: "٠٢",
+
           title: "صمم",
-          description:
-            "نضع الاستراتيجية وتجربة الاستخدام والخريطة التقنية.",
+
+          description: "نضع الاستراتيجية وتجربة الاستخدام والخريطة التقنية.",
         },
+
         {
           number: "٠٣",
+
           title: "سلّم",
+
           description:
             "ننفذ ونختبر ونطلق، ثم نبقى قريبين بينما ينمو الحل الخاص بك.",
         },
       ],
     },
+
     quote: {
-      quote:
-        "يجب أن تبدو التقنية كدفعة للأمام، لا كشيء إضافي يحتاج إلى إدارة.",
+      quote: "يجب أن تبدو التقنية كدفعة للأمام، لا كشيء إضافي يحتاج إلى إدارة.",
+
       description:
         "هذا المبدأ يوجه كل حل نصنعه: سهل الاستخدام، قوي من الداخل، ومصمم ليحقق أثرًا ملموسًا.",
+
       signatureTitle: "AeroDev",
+
       signatureSubtitle: "شريكك الرقمي للنمو",
     },
+
     cta: {
       label: "هل لديك مشروع في ذهنك؟",
+
       headingLineOne: "لنجعل فكرتك التالية",
+
       headingLineTwo: "تتحول إلى زخم حقيقي.",
+
       description:
         "أخبرنا إلى أين تريد الوصول، وسنساعدك على بناء الطريق الأذكى للوصول.",
+
       button: "تحدث معنا عبر واتساب",
     },
+
     footer: {
       lineOne: "أتمتة بالذكاء الاصطناعي · تطوير الويب · تطوير التطبيقات",
+
       lineTwo: "© 2025 AeroDev. صُمم لما هو قادم.",
     },
   },
@@ -393,24 +550,37 @@ const translations = {
 
 const socialLinks = {
   facebook: "https://www.facebook.com/share/19wPG27NwD/",
+
   instagram: "https://www.instagram.com/aerodev_studios?dlrf=aTdueGcwYWc3bXo=",
+
   tiktok: "https://www.tiktok.com/@aerodev.studios?_r=1&_t=ZS-9BLE9i4kAYI",
+
   email: "mailto:hello@aerodev.com",
 } as const
 
 function ServiceCard({
   number,
+
   title,
+
   description,
+
   icon,
+
   linkLabel,
+
   featured = false,
 }: {
   number: string
+
   title: string
+
   description: string
+
   icon: ReactNode
+
   linkLabel: string
+
   featured?: boolean
 }) {
   return (
@@ -435,13 +605,14 @@ function ServiceCard({
   )
 }
 
-export default function App() {
+function LegacyApp() {
   const [language, setLanguage] = useState<Language>(() => {
     if (typeof window === "undefined") {
       return "en"
     }
 
     const storedLanguage = window.localStorage.getItem("aerodev-language")
+
     if (storedLanguage === "en" || storedLanguage === "ar") {
       return storedLanguage
     }
@@ -452,17 +623,21 @@ export default function App() {
   })
 
   const direction = language === "ar" ? "rtl" : "ltr"
+
   const copy = translations[language]
 
   useEffect(() => {
     document.documentElement.lang = language
+
     document.documentElement.dir = direction
+
     document.body.dir = direction
+
     document.title = "AeroDev"
+
     window.localStorage.setItem("aerodev-language", language)
   }, [language, direction])
 
-  // Set the favicon from the logo in /public
   useEffect(() => {
     let iconLink = document.querySelector(
       'link[rel="icon"]',
@@ -470,11 +645,14 @@ export default function App() {
 
     if (!iconLink) {
       iconLink = document.createElement("link")
+
       iconLink.rel = "icon"
+
       document.head.append(iconLink)
     }
 
     iconLink.type = "image/png"
+
     iconLink.href = logoAssetUrl
   }, [])
 
@@ -519,9 +697,7 @@ export default function App() {
             {copy.hero.headingLineOne}
             <span>{copy.hero.headingLineTwo}</span>
           </h1>
-          <p>
-            {copy.hero.description}
-          </p>
+          <p>{copy.hero.description}</p>
           <div className="hero-actions">
             <a
               className="primary-button"
@@ -537,10 +713,7 @@ export default function App() {
           </div>
         </div>
 
-        <div
-          className="hero-visual"
-          aria-label={copy.hero.visualLabel}
-        >
+        <div className="hero-visual" aria-label={copy.hero.visualLabel}>
           <div className="orbital orbital-one" />
           <div className="orbital orbital-two" />
           <div className="grid-plane" />
@@ -591,9 +764,7 @@ export default function App() {
               <em>{copy.services.headingEmphasis}</em>
             </h2>
           </div>
-          <p className="section-intro">
-            {copy.services.intro}
-          </p>
+          <p className="section-intro">{copy.services.intro}</p>
         </div>
         <div className="services-grid">
           {copy.services.cards.map((card, index) => (
@@ -603,7 +774,9 @@ export default function App() {
               title={card.title}
               description={card.description}
               linkLabel={card.linkLabel}
-              icon={index === 0 ? <Spark /> : index === 1 ? <Braces /> : <Layers />}
+              icon={
+                index === 0 ? <Spark /> : index === 1 ? <Braces /> : <Layers />
+              }
               featured={index === 0}
             />
           ))}
@@ -654,9 +827,7 @@ export default function App() {
           <br />
           {copy.cta.headingLineTwo}
         </h2>
-        <p>
-          {copy.cta.description}
-        </p>
+        <p>{copy.cta.description}</p>
         <a
           className="whatsapp-button"
           href={whatsappUrl}
@@ -676,16 +847,38 @@ export default function App() {
           <span>AeroDev</span>
         </a>
         <div className="footer-icons" aria-label="Social and contact links">
-          <a className="footer-icon-link" href={socialLinks.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+          <a
+            className="footer-icon-link"
+            href={socialLinks.instagram}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+          >
             <Instagram className="footer-icon" />
           </a>
-          <a className="footer-icon-link" href={socialLinks.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
+          <a
+            className="footer-icon-link"
+            href={socialLinks.facebook}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+          >
             <Facebook className="footer-icon" />
           </a>
-          <a className="footer-icon-link" href={socialLinks.tiktok} target="_blank" rel="noreferrer" aria-label="TikTok">
+          <a
+            className="footer-icon-link"
+            href={socialLinks.tiktok}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="TikTok"
+          >
             <TikTok className="footer-icon" />
           </a>
-          <a className="footer-icon-link" href={socialLinks.email} aria-label="Email">
+          <a
+            className="footer-icon-link"
+            href={socialLinks.email}
+            aria-label="Email"
+          >
             <Mail className="footer-icon" />
           </a>
         </div>
@@ -702,6 +895,69 @@ export default function App() {
       >
         <WhatsApp />
       </a>
+    </main>
+  )
+}
+
+export default function App() {
+  const [language, setLanguage] = useState<"en" | "ar">(() => {
+    if (typeof window === "undefined") return "en"
+
+    const storedLanguage = window.localStorage.getItem("aerodev-language")
+
+    if (storedLanguage === "en" || storedLanguage === "ar")
+      return storedLanguage
+
+    return window.navigator.language.toLowerCase().startsWith("ar")
+      ? "ar"
+      : "en"
+  })
+
+  const direction = language === "ar" ? "rtl" : "ltr"
+
+  const copy = translations[language] as SiteCopy
+
+  useEffect(() => {
+    document.documentElement.lang = language
+
+    document.documentElement.dir = direction
+
+    document.body.dir = direction
+
+    document.title = "AeroDev"
+
+    window.localStorage.setItem("aerodev-language", language)
+
+    let iconLink = document.querySelector(
+      'link[rel="icon"]',
+    ) as HTMLLinkElement | null
+
+    if (!iconLink) {
+      iconLink = document.createElement("link")
+
+      iconLink.rel = "icon"
+
+      document.head.append(iconLink)
+    }
+
+    iconLink.type = "image/png"
+
+    iconLink.href = logoAssetUrl
+  }, [language, direction])
+
+  return (
+    <main className="app-shell" lang={language} dir={direction}>
+      <Navigation
+        copy={copy.nav}
+        language={language}
+        onLanguageChange={() => setLanguage(language === "en" ? "ar" : "en")}
+      />
+      <HeroSection copy={copy.hero} />
+      <ServicesSection copy={copy.services} />
+      <ProcessSection copy={{ ...copy.process, quote: copy.quote }} />
+      <CtaSection copy={copy.cta} />
+      <Footer copy={copy.footer} />
+      <FloatingWhatsApp ariaLabel={copy.nav.whatsappAriaLabel} />
     </main>
   )
 }
