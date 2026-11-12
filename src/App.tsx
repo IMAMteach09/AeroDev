@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react"
-import logoAssetUrl from "./assets/ad-logo.png"
+import logoAssetUrl from "./assets/ad-logo.png?inline"
 
 const whatsappUrl =
   "https://wa.me/213652580787?text=Hi%20AeroDev%2C%20I%27d%20like%20to%20discuss%20a%20digital%20project."
